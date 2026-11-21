@@ -304,45 +304,6 @@
 
   /* ══════════════ BEFORE / AFTER ══════════════ */
   #realizacje { background:var(--black); }
-  .ba-head { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; margin-bottom:70px; }
-  .ba-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
-
-  .ba-card { background:var(--b2); border:1px solid var(--border); overflow:hidden; }
-  .ba-card-label {
-    position:absolute; top:18px; left:18px; z-index:4;
-    font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold);
-    background:rgba(0,0,0,.82); border:1px solid var(--border); padding:5px 13px;
-  }
-  .ba-slider {
-    position:relative; width:100%; padding-top:65%; overflow:hidden;
-    cursor:ew-resize; user-select:none;
-  }
-  .ba-img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
-  .ba-over { clip-path:inset(0 50% 0 0); transition:clip-path .04s; }
-  .ba-line {
-    position:absolute; top:0; left:50%; transform:translateX(-50%);
-    width:2px; height:100%; background:var(--gold); z-index:5; transition:left .04s;
-  }
-  .ba-handle {
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    width:42px; height:42px; background:var(--gold); border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--black); font-size:14px; font-weight:900;
-    box-shadow:0 0 24px rgba(200,168,75,.55);
-  }
-  .ba-tags {
-    position:absolute; bottom:14px; width:100%; z-index:4;
-    display:flex; justify-content:space-between; padding:0 14px; pointer-events:none;
-  }
-  .ba-tag {
-    font-size:9px; letter-spacing:2.5px; text-transform:uppercase;
-    font-weight:700; padding:5px 12px;
-  }
-  .ba-tag.b { background:rgba(0,0,0,.75); color:rgba(244,238,216,.5); }
-  .ba-tag.a { background:var(--gold); color:var(--black); }
-  .ba-info { padding:22px 26px; border-top:1px solid var(--border); }
-  .ba-info h4 { font-family:'Playfair Display',serif; font-size:17px; margin-bottom:5px; }
-  .ba-info p { font-size:11px; opacity:.45; }
 
   /* ══════════════ FREE ESTIMATE ══════════════ */
   #wycena {
@@ -1341,7 +1302,7 @@ function submitForm(btn){
       afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
       handle.style.left = pct + '%';
     }
-    slider.addEventListener('mousedown', function(e) { dragging = true; setPos(e.clientX); });
+    slider.addEventListener('mousedown', function(e) { e.preventDefault(); dragging = true; setPos(e.clientX); });
     window.addEventListener('mouseup', function() { dragging = false; });
     window.addEventListener('mousemove', function(e) { if(dragging) setPos(e.clientX); });
     slider.addEventListener('touchstart', function(e) { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
